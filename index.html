@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EMP Fake</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      type="text/javascript"
+      src="/pixel-teasertracking-v2.min.js"
+    ></script>
+    <script type="text/javascript" src="/webtrekk_v4.min.js"></script>
+
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-KH7VHCM");
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Webtrekk / Mapp -->
+
+    <script>
+      // config object
+      var webtrekkConfig = webtrekkConfig || {
+        trackId: "876936451222772",
+        trackDomain: "danielebootcampgmbh01.wt-eu02.net",
+        domain: "REGEXP:^(.elated-kepler-09285f*\\.netlify\\.app)$",
+        mediaCode: "wt_mc",
+        cookie: "3",
+        safetag: {
+          async: true,
+          timeout: 2000,
+          /** Load SafeTag from Webtrekk Server */
+          safetagDomain: "responder.wt-safetag.com",
+          safetagId: "111111111111111",
+          /** Load SafeTag from Customer Server */
+          // customDomain: "www.domain.de",
+          // customPath: "javascripts/webtrekk_safetag.js",
+          option: {},
+        },
+      };
+
+      // Teaser Tracking
+
+      // Config Object
+
+      window.wt_teaserTracking = function (conf) {
+        if (
+          (conf.mode === "page" || conf.mode === "config") &&
+          conf.requestCounter === 1
+        ) {
+          var wt_teaserTrackingConfig_v2 = window.wt_teaserTrackingConfig_v2 || {
+            teaserAttribute: "data-wt-teaser",
+            viewPercent: 100,
+            viewTime: 1000,
+            attribution: "all", // first, last, all
+            maxSendTeasers: {
+              session: 10000,
+              page: 1000,
+            },
+            clearConversions: true,
+            autoEngagements: true,
+          };
+        }
+      };
+      //
+
+      // initate
+      var wt = new webtrekkV3();
+      wt.executePluginFunction = "wt_teaserTracking";
+      // send data
+      wt.sendinfo();
+
+      window.wt_ttv2 = window.wt_ttv2 || [];
+      window.wt_ttv2.push({
+        selector: "document.body.children[1].children[0]",
+        exclude: ["document.body.children[1].children[1]"],
+        data: {
+          name: "Night Shopping",
+          rank: "Main Page Banner",
+          content: "20% Discount",
+          variant: "campaign",
+        },
+        conversion: {
+          type: "view",
+          goal: "order",
+          value: "10%",
+        },
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-KH7VHCM"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <!-- NAvBAR -->
+    <nav class="nav-container">
+      <img
+        class="img-fluid img-logo"
+        src="https://www.overdrive.ie/wp-content/uploads/2018/07/emp-logo.png"
+        alt="emp log0"
+      />
+      <div class="nav-titles">
+        <h4>Home</h4>
+        <h4><a href="./subpages/men.html">Men</a></h4>
+        <h4><a href="./subpages/women.html">Women</a></h4>
+        <h4><a href="./subpages/fun&lifestyle.html">Fun&Lifestyle</a></h4>
+      </div>
+    </nav>
+
+    <!-- central object 1 -->
+    <div class="centralDiv">
+      <!-- image 1 -->
+      <div class="teaser1 img-container1 img-fluid discount-img">
+        <div class="card bg-dark text-white">
+          <a
+            href="./subpages/nightshopping.html"
+            onclick="wt.sendinfo({linkId:'eventname', customEcommerceParameter:{1: 'NightShop-Teaser'}}); test()"
+          >
+            <img
+              class="card-img"
+              src="https://images.milled.com/2020-08-07/gxFx0Od9tfvIuw1q/uCgsYtMwGMsJ.jpg"
+              alt="background"
+            />
+          </a>
+        </div>
+      </div>
+      <!-- image 2 -->
+      <div class="teaser2 img-container2 img-fluid">
+        <div class="img-fluid img2">
+          <div id="demo" class="carousel" data-ride="carousel">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+            </ul>
+
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+              <div class="xmas carousel-item active">
+                <a href="./subpages/merryxmas.html">
+                  <img
+                    src="https://www.emp.de/dw/image/v2/BBQV_PRD/on/demandware.static/-/Library-Sites-EMPSharedLibrary/default/dwe8278f01/83643_CAT_Header_Xmas_LP_2020_DE_v2.jpg?sw=1400"
+                    alt="Xmas"
+                  />
+                </a>
+              </div>
+              <div class="carousel-item">
+                <a href="./subpages/midsale.html">
+                  <img
+                    src="https://www.animegeeks.de/wp-content/uploads/2018/05/63355_SNL_RTS_Midseason_Sale_DE.jpg"
+                    alt="EndSeason"
+                  />
+                </a>
+              </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <p>All prices include VAT</p>
+      <p>© Daniele - Wanna be E.M.P. Merchandising HGmbH</p>
+    </footer>
+    <script src="./index.js"></script>
+  </body>
+</html>

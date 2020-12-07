@@ -19,7 +19,7 @@ app.get("/posts",(req,res)=>{
 });
 
 //Connect to DB
-mongoose.connect("mongodb+srv://daniele:daniele123@rest.janhu.mongodb.net/Rest?retryWrites=true&w=majority", ()=>{
+mongoose.connect("mongodb+srv://daniele:******@rest.janhu.mongodb.net/Rest?retryWrites=true&w=majority", ()=>{
     console.log("Connected to DB");
 })
 

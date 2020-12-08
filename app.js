@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+require("dotenv/config");
 
 //Middlewares
 
@@ -19,7 +20,10 @@ app.get("/posts",(req,res)=>{
 });
 
 //Connect to DB
-mongoose.connect("mongodb+srv://daniele:******@rest.janhu.mongodb.net/Rest?retryWrites=true&w=majority", ()=>{
+mongoose.connect(
+    process.env.DB_CONNECTION,
+{ useNewUrlParser: true },
+ ()=>{
     console.log("Connected to DB");
 })
 

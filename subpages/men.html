@@ -158,6 +158,31 @@
 
   <script>
 
+    fetch("http://localhost:3000/productList", {
+      method: "get",
+      mode: "cors"
+    } ).then((response) => {
+      console.log(response)
+      return response.json()
+      
+    }).then((jsonData) => {
+
+        console.log("jsonData", jsonData)
+
+            
+    // data layer push
+    if(window.dataLayer){
+      dataLayer.push({
+        name: "initial_product_list",
+        product_list:jsonData
+      })
+    }
+
+          renderProductList(jsonData);
+
+
+      })
+
     const productList = [
       {
         id: 1,
@@ -171,21 +196,10 @@
         image: "https://images-na.ssl-images-amazon.com/images/I/71Zk9ftWJXL._AC_UY500_.jpg",
         price: 74
       },
-      {
-        id: 2,
-        name : "Man Hat",
-        image: "https://i.ebayimg.com/images/g/tm0AAOSwx1Rdy9Wc/s-l640.jpg",
-        price: 18
-      }
+     
     ]
 
-    
-    // data layer push
-    if(window.dataLayer){
-      dataLayer.push({
-        productList
-      })
-    }
+
     
 
     /*
@@ -242,6 +256,7 @@
       if(window.dataLayer){
         dataLayer.push({
             name: "click_on_buy",
+            id: product._id,
             productName: product.name,
             price: product.price,
             image: product.image,
@@ -271,7 +286,6 @@
       list.forEach(renderSingleProduct)
     }
 
-    renderProductList(productList);
 
 
   </script>

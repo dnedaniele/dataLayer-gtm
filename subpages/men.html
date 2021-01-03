@@ -109,98 +109,34 @@
 
   <!-- Product List -->
   <div class="product-container" id="prod-list-cont">
-    <!-- Product 1 -->
-    <div class="card product" style="width: 18rem">
-      <img
-        src="https://www.emp.de/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dw81df550c/images/4/6/6/8/466821a.jpg?sw=1000&sh=800&sm=fit&sfrm=png"
-        class="card-img-top" alt="sweater">
-      <div class="card-body">
-        <h5 class="card-title">Holiday Sweater AC/DC</h5>
-        <p class="card-text">
-          Price: 64,99 €
-        </p>
-        <a href="../subpages/Product Page/productPage_sweater.html" class="btn btn-primary">Buy</a>
-      </div>
-    </div>
-    <!-- Product 2 -->
-    <div class="card product" style="width: 18rem">
-      <img
-        src="https://www.emp.de/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dw1fe4b7ef/images/4/7/1/3/471364a.jpg?sw=1000&sh=800&sm=fit&sfrm=png"
-        class="card-img-top" alt="socken">
-      <div class="card-body">
-        <h5 class="card-title">Kiss Socks</h5>
-        <p class="card-text">
-          Price: 14,99 €
-        </p>
-        <a href="./addtocart.html" class="btn btn-primary">Buy</a>
-      </div>
-    </div>
-    <!-- Product 3 -->
-    <div class="card product" style="width: 18rem">
-      <img
-        src="https://www.emp.de/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dwdd29a9fa/images/4/6/9/4/469428a.jpg?sw=1000&sh=800&sm=fit&sfrm=png"
-        class="card-img-top" alt="tshirt">
-      <div class="card-body">
-        <h5 class="card-title">Valhalla T-Shirt</h5>
-        <p class="card-text">
-          Price: 19,99 €
-        </p>
-        <a href="./addtocart.html" class="btn btn-primary">Buy</a>
-      </div>
-    </div>
+
   </div>
   <!-- footer -->
   <footer>
     <p>All prices include VAT</p>
     <p>© Daniele - Wanna be E.M.P. Merchandising HGmbH</p>
   </footer>
-  <script src="../index.js"></script>
+  <script src="../product.js"></script>
 
   <script>
 
     fetch("http://localhost:3000/productList", {
       method: "get",
       mode: "cors"
-    } ).then((response) => {
-      console.log(response)
-      return response.json()
-      
-    }).then((jsonData) => {
+    }).then((response) => (response.json())
+    ).then((data) => {
+      renderProductList(data);
 
-        console.log("jsonData", jsonData)
+      // data layer push
+      if (window.dataLayer) {
+        dataLayer.push({
+          name: "initial_product_list",
+          product_list: data
+        })
+      }
 
-            
-    // data layer push
-    if(window.dataLayer){
-      dataLayer.push({
-        name: "initial_product_list",
-        product_list:jsonData
-      })
-    }
+    })
 
-          renderProductList(jsonData);
-
-
-      })
-
-    const productList = [
-      {
-        id: 1,
-        name : "Man T-Shirt",
-        image: "https://www.emp-online.com/dw/image/v2/BBQV_PRD/on/demandware.static/-/Sites-master-emp/default/dwe34db643/images/1/4/6/3/146311a-emp.jpg?sw=350&sh=400&sm=fit&sfrm=png",
-        price: 23
-      },
-            {
-        id: 2,
-        name : "Man Boots",
-        image: "https://images-na.ssl-images-amazon.com/images/I/71Zk9ftWJXL._AC_UY500_.jpg",
-        price: 74
-      },
-     
-    ]
-
-
-    
 
     /*
     <div class="card product" style="width: 18rem">
@@ -218,7 +154,7 @@
     */
 
 
-    function renderSingleProduct(product){
+    function renderSingleProduct(product) {
       const productContainer = document.createElement("div");
 
       productContainer.classList.add("card");
@@ -239,22 +175,22 @@
       nameTag.innerHTML = product.name;
 
       const priceTag = document.createElement("span");
-      priceTag.innerHTML = "Price: " + product.price +" €"
+      priceTag.innerHTML = "Price: " + product.price + " €"
 
       const productImg = document.createElement("img");
       productImg.classList.add("card-img-top");
-      productImg.src = product.image 
-      
+      productImg.src = product.image
+
       const buyButton = document.createElement("button");
       buyButton.classList.add("btn");
       buyButton.classList.add("btn-primary");
       buyButton.innerHTML = "Buy";
 
-      buyButton.onclick = function(){
+      buyButton.onclick = function () {
 
-      // data layer push
-      if(window.dataLayer){
-        dataLayer.push({
+        // data layer push
+        if (window.dataLayer) {
+          dataLayer.push({
             name: "click_on_buy",
             id: product._id,
             productName: product.name,
@@ -262,17 +198,30 @@
             image: product.image,
             created_at: new Date()
           })
-        }else{
+        } else {
           console.warn("Analytics won't work without a proper data layer setup!")
         }
 
         console.log("pushed to data layer")
       };
-/// <*****************************>
+
+      //Details Buttons
+
+      const detailsButton = document.createElement("a");
+      detailsButton.classList.add("btn");
+      detailsButton.classList.add("btn-primary");
+      detailsButton.href = `/subpages/product.html?productId=${product._id}`
+      detailsButton.innerHTML = "Product Details";
+
+      detailsButton.onclick = function () {
+        console.log("open details page");
+      };
+      /// <*****************************>
       cardContainer.appendChild(nameTag);
-     cardContainer.appendChild(productImg);
+      cardContainer.appendChild(productImg);
       cardContainer.appendChild(priceTag);
       cardContainer.appendChild(buyButton);
+      cardContainer.appendChild(detailsButton);
 
       // oldest parent
       productContainer.appendChild(cardContainer);
@@ -282,14 +231,14 @@
     }
 
     // call for each
-    function renderProductList(list){
+    function renderProductList(list) {
       list.forEach(renderSingleProduct)
     }
 
 
 
   </script>
-  
+
 </body>
 
 </html>
